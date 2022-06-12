@@ -23,17 +23,16 @@ const App = () => {
         setNum1(text);
         setResult(text);
       } else {
-        const _cache = _text * 10;
-        const text = num2 + _text;
+        const _cache = num2 * 10;
+        const text = _cache + _text;
         setNum2(text);
         setResult(text);
       }
     }
-  };  
+  };
 
   return (
     <div className="App">
-   
       <div className="result">{result}</div>
       <div className="btns">
         {btns.map((item) => {
