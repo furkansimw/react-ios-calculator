@@ -29,10 +29,11 @@ const App = () => {
         setResult(text);
       }
     }
-  };
+  };  
 
   return (
     <div className="App">
+   
       <div className="result">{result}</div>
       <div className="btns">
         {btns.map((item) => {
