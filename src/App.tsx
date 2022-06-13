@@ -8,29 +8,48 @@ const App = () => {
   const [num2, setNum2] = useState(0);
 
   const tap = (_text: any) => {
-    if (
-      _text === "÷" ||
-      _text === "+" ||
-      _text === "%" ||
-      _text === "-" ||
-      _text === "x"
-    ) {
+    if (is(_text, ["+", "-", "-", "x", "÷", "%"])) {
       setOperator(_text);
-    } else if (true) {
+    } else if (is(_text, ["="])) {
+      if (operator === null) return;
+      else {
+        work();
+      }
+    } else {
       if (operator === null) {
-        const _cache = num1 * 10;
-        const text = _cache + _text;
-        setNum1(text);
-        setResult(text);
+        const number = num1 * 10 + _text;
+        setNum1(number);
+        setResult(number);
       } else {
-        const _cache = num2 * 10;
-        const text = _cache + _text;
-        setNum2(text);
-        setResult(text);
+        const number = num2 * 10 + _text;
+        setNum2(number);
+        setResult(number);
       }
     }
   };
-
+  const work = () => {
+    if (operator === "+") {
+      setResult(num1 + num2);
+    }
+    if (operator === "-") {
+      setResult(num1 - num2);
+    }
+    if (operator === "x") {
+      setResult(num1 * num2);
+    }
+    if (operator === "÷") {
+      setResult(num1 / num2);
+    }
+    if (operator === "%") {
+      setResult(num1 % num2);
+    }
+  };
+  const is = (_text: any, contains: string[]): boolean => {
+    if (contains.includes(_text)) {
+      return true;
+    }
+    return false;
+  };
   return (
     <div className="App">
       <div className="result">{result}</div>
