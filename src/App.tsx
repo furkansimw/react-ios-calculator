@@ -32,7 +32,7 @@ const App = () => {
   const tap = (_text: any) => {
     if (is(_text, ["+", "-", "-", "x", "÷", "%"])) {
       if (result !== null) {
-        setNum2(0)
+        setNum2(0);
         setNum1(result);
       }
       setOperator(_text);
@@ -45,6 +45,14 @@ const App = () => {
       if (operator === null) return;
       else {
         work();
+      }
+    } else if (_text === "+/-") {
+      if (operator === null) {
+        setNum1(num1 * -1);
+        setResult(num1);
+      } else {
+        setNum2(num2 * -1);
+        setResult(num2);
       }
     } else {
       if (operator === null) {
